@@ -17,9 +17,7 @@ int main(int argc, char *argv[])
         char *args[1024];
         int i = 0;
         args[i] = strtok(com_line, " \t\n");
-        char tok[128] = strtok(NULL, " \t\n");
-        while (tok != NULL) {
-            tok = strtok(NULL, " \t\n");
+        while (char tok[] = strtok(NULL, " \t\n") != NULL) {
             args[i] = tok;
             i++;
         }
