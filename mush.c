@@ -22,10 +22,11 @@ int main(void)
             args[i] = tok;
             i++;
         } while ((tok = strtok(NULL, " \t\n\r")) != NULL);
+        args[i] = NULL;
     }
-
-        printf("number of arguments = %d\n", i);
-        for (int j = 0; j < i; j++) {
+        // verify args array contains what it's supposed to
+        printf("number of arguments = %d\n", i+1);
+        for (int j = 0; j <= i; j++) {
             printf("arg %d: %s\n", j, args[j]);
         }
 
