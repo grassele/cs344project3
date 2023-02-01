@@ -4,10 +4,10 @@
 #include <unistd.h>  // for fork(), execvp()
 #include <sys/wait.h>  // for wait()
 
-int main(int argc, char *argv[])
-{
-    // (void) argc;
+// clang -Wall -Wextra mush.c
 
+int main(void)
+{
     for (int i = 0; i < 2; i++) {  // TODO: delete condition for infinite loop
         printf("mush$ ");
         fflush(stdout);
@@ -16,16 +16,21 @@ int main(int argc, char *argv[])
 
         char *args[1024];
         int i = 0;
-        args[i] = strtok(com_line, " \t\n");
-        while (char tok[] = strtok(NULL, " \t\n") != NULL) {
+        // args[i] = strtok(com_line, " \t\n\r");
+        char *tok;
+        // while (tok = strtok(NULL, " \t\n\r") != NULL) {
+        //     args[i] = tok;
+        //     i++;
+        // }
+        if ((tok = strtok(com_line, " \t\n\r")) != NULL) {
+        do {
             args[i] = tok;
             i++;
-        }
+        } while ((tok = strtok(NULL, " \t\n\r")) != NULL);
+    }
 
-        printf("number of arguments = %d\n", i+1);
-        printf("AAAAA\n");
+        printf("number of arguments = %d\n", i);
         for (int j = 0; j < i; j++) {
-            printf("BBBBB\n");
             printf("arg %d: %s\n", j, args[j]);
         }
 
