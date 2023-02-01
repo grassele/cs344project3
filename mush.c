@@ -16,12 +16,7 @@ int main(void)
 
         char *args[1024];
         int i = 0;
-        // args[i] = strtok(com_line, " \t\n\r");
         char *tok;
-        // while (tok = strtok(NULL, " \t\n\r") != NULL) {
-        //     args[i] = tok;
-        //     i++;
-        // }
         if ((tok = strtok(com_line, " \t\n\r")) != NULL) {
         do {
             args[i] = tok;
